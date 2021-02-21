@@ -1,11 +1,15 @@
 package be.dhofief.farmwatchbackend.controller.dto;
 
+import be.dhofief.farmwatchbackend.commons.SystemException;
+import be.dhofief.farmwatchbackend.commons.ValidationException;
 import be.dhofief.farmwatchbackend.model.AppelDtoConverter;
 import be.dhofief.farmwatchbackend.service.AppelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -37,6 +41,19 @@ public class AppelController {
         return ResponseEntity.ok(
                 appelDtoConverter.toDto(
                         appelService.getAppel(id)
+                )
+        );
+    }
+
+    @PostMapping("/appels")
+    public ResponseEntity<AppelDTO> createAppel(@RequestBody AppelDTO appelDTO) throws ValidationException, SystemException {
+        return ResponseEntity.ok(
+                appelDtoConverter.toDto(
+                        appelService.createAppel(
+                                appelDtoConverter.toModel(
+                                        appelDTO
+                                )
+                        )
                 )
         );
     }

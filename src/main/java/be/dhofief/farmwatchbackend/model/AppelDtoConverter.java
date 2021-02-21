@@ -1,12 +1,13 @@
 package be.dhofief.farmwatchbackend.model;
 
+import be.dhofief.farmwatchbackend.commons.DtoConverter;
 import be.dhofief.farmwatchbackend.controller.dto.AppelDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class AppelDtoConverter {
+public class AppelDtoConverter implements DtoConverter<AppelDTO, AppelModel> {
 
     public AppelDTO toDto(AppelModel model) {
         return AppelDTO.builder()
