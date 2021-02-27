@@ -3,6 +3,7 @@ package be.dhofief.farmwatchbackend.service;
 import be.dhofief.farmwatchbackend.config.BinanceDexApiConfig;
 import com.binance.dex.api.client.BinanceDexApiNodeClient;
 import com.binance.dex.api.client.domain.Account;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,7 +14,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(classes = BinanceDexApiConfig.class)
 @ActiveProfiles("private")
-class SmartChainServiceTest {
+@Disabled
+class BinanceDexApiNodeClientTest {
 
     private static final String INVALID = "invalid";
 
